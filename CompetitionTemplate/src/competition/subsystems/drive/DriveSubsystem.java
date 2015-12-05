@@ -7,8 +7,8 @@ import com.google.inject.Singleton;
 
 import xbot.common.injection.wpi_factories.WPIFactory;
 import xbot.common.properties.PropertyManager;
-import xbot.common.wpi_extensions.BaseSubsystem;
-import xbot.common.wpi_extensions.mechanism_wrappers.XSpeedController;
+import xbot.common.command.BaseSubsystem;
+import xbot.common.controls.actuators.XSpeedController;
 
 @Singleton
 public class DriveSubsystem extends BaseSubsystem {
