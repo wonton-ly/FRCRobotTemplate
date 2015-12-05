@@ -12,16 +12,16 @@ import xbot.common.controls.sensors.XJoystick;
  */
 @Singleton
 public class OI {
-	public XJoystick leftJoystick;
-	public XJoystick rightJoystick;
-	
-	@Inject
-	public OI(WPIFactory factory) {
-		leftJoystick = factory.getJoystick(1);
-		rightJoystick = factory.getJoystick(2);
+    public XJoystick leftJoystick;
+    public XJoystick rightJoystick;
+    
+    @Inject
+    public OI(WPIFactory factory) {
+        leftJoystick = factory.getJoystick(1);
+        rightJoystick = factory.getJoystick(2);
 
         leftJoystick.setYInversion(true);
         rightJoystick.setXInversion(true);
-	} 
+    } 
 }
 

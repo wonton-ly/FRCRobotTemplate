@@ -8,28 +8,28 @@ import xbot.common.command.BaseCommand;
 
 public class TankDriveWithJoysticksCommand extends BaseCommand {
 
-	final DriveSubsystem driveSubsystem;
-	final OI oi;
-	
-	@Inject
+    final DriveSubsystem driveSubsystem;
+    final OI oi;
+    
+    @Inject
     public TankDriveWithJoysticksCommand(OI oi, DriveSubsystem driveSubsystem)
     {
         this.oi = oi;
         this.driveSubsystem = driveSubsystem;
         this.requires(this.driveSubsystem);
     }
-	
-	@Override
-	public void initialize() {
-		
-	}
+    
+    @Override
+    public void initialize() {
+        
+    }
 
-	@Override
-	public void execute() {
-		driveSubsystem.tankDrive(
-				oi.leftJoystick.getVector().y,
-				oi.rightJoystick.getVector().y);
-		
-	}
+    @Override
+    public void execute() {
+        driveSubsystem.tankDrive(
+                oi.leftJoystick.getVector().y,
+                oi.rightJoystick.getVector().y);
+        
+    }
 
 }
