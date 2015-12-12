@@ -5,8 +5,10 @@ install:
   - mkdir -p /home/travis/wpilib/java/current/lib/
   - cp XbotCommonLib/lib/WPILib.jar /home/travis/wpilib/java/current/lib/
   - cp XbotCommonLib/lib/NetworkTables.jar /home/travis/wpilib/java/current/lib/
+  - mkdir -p /home/travis/wpilib/java/current/ant
+  - cp wpilib/build.properties /home/travis/wpilib/java/current/ant
+  - cp wpilib/build.xml /home/travis/wpilib/java/current/ant
 script:
   - cd XbotCommonLib && ant jar
   - cd ../CompetitionTemplate && ant jar
-  - ant demo
 

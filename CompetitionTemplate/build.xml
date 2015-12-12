@@ -27,7 +27,7 @@
   <ant antfile="../XbotCommonLib/build.xml" target="jar" inheritAll="false"/>	
   <!-- <ant antfile="../log4jConfig/deployLogging.xml" target="sendConfig" inheritall="false"/> -->
 	  
-  <import file="wpilib/build.xml"/>
+  <import file="${wpilib.ant.dir}/build.xml"/>
   <target name="demo">
     <echo>[competitiontemplate-jar] Echo ${wpilib.ant.dir}</echo>
   </target>
