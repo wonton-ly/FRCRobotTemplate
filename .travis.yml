@@ -6,5 +6,6 @@ install:
   - cp XbotCommonLib/lib/WPILib.jar /home/travis/wpilib/java/current/lib/
   - cp XbotCommonLib/lib/NetworkTables.jar /home/travis/wpilib/java/current/lib/
 script:
+  - cd XbotCommonLib && ant jar
   - cd CompetitionTemplate && ant jar
 
