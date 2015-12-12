@@ -8,4 +8,5 @@ install:
 script:
   - cd XbotCommonLib && ant jar
   - cd ../CompetitionTemplate && ant jar
+  - ant demo
 

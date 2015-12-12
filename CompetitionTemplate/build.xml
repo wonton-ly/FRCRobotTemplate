@@ -28,6 +28,8 @@
   <!-- <ant antfile="../log4jConfig/deployLogging.xml" target="sendConfig" inheritall="false"/> -->
 	  
   <import file="${wpilib.ant.dir}/build.xml"/>
-
+  <target name="demo">
+    <echo>[competitiontemplate-jar] Echo ${wpilib.ant.dir}</echo>
+  </target>
 
 </project> 
