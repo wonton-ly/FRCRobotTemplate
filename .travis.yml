@@ -6,7 +6,7 @@ before_install:
 jdk:
   - oraclejdk8
 env:
-  - TEST_DIR=CompetitionTemplate
+  - TEST_DIR=CompetitionRobot
 script: 
   - cd $TEST_DIR
   - ../custom-ant.sh check -f robot-program-build.xml
