@@ -1,8 +1,5 @@
 language: java
 jdk:
   - oraclejdk8
-env:
-  - TEST_DIR=CompetitionTemplate
 script: 
-  - cd $TEST_DIR
-  - ant check -f robot-program-build.xml
+  - ant check -f SeriouslyCommonLib/commonlib-build.xml
