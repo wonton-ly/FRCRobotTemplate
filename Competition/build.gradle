@@ -140,3 +140,9 @@ tasks.withType(Test) {
       }
     }
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
