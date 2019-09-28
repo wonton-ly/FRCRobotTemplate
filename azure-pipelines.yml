@@ -38,5 +38,5 @@ jobs:
     - task: PublishCodeCoverageResults@1
       inputs:
         codeCoverageTool: 'JaCoCo'
-        summaryFileLocation: 'build/reports/jacoco/test/jacocoTestReport.xml'
-        reportDirectory: 'build/reports/jacoco/test/html'
+        summaryFileLocation: 'Competition/build/reports/jacoco/test/jacocoTestReport.xml'
+        reportDirectory: 'Competition/build/reports/jacoco/test/html'
