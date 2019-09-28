@@ -121,6 +121,12 @@ task checkstyle(type: Checkstyle) {
     classpath = files()
 }
 
+test {
+    reports {
+        junitXml.enabled = true
+    }               
+}
+
 tasks.withType(Test) {
     testLogging.showStandardStreams = true
     
