@@ -147,3 +147,6 @@ jacocoTestReport {
         xml.enabled true
     }
 }
+
+// always generate the coverage report after the tests run
+test.finalizedBy { jacocoTestReport }
