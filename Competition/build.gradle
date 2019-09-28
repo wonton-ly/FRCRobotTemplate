@@ -3,6 +3,7 @@ plugins {
     id "edu.wpi.first.GradleRIO" version "2019.3.2"
     id 'org.hidetake.ssh' version "2.9.0"
     id 'checkstyle'
+    id 'jacoco'
 }
 
 def ROBOT_MAIN_CLASS = "competition.Main"
