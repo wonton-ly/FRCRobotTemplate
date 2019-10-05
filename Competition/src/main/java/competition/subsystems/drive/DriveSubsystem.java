@@ -1,10 +1,9 @@
 package competition.subsystems.drive;
 
-import org.apache.log4j.Logger;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+
+import org.apache.log4j.Logger;
 
 import xbot.common.command.BaseSubsystem;
 import xbot.common.controls.actuators.XCANTalon;
