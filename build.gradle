@@ -48,12 +48,10 @@ repositories {
     maven {
         url "https://mvnrepository.com/artifact/com.google.inject/guice"
         url "http://first.wpi.edu/FRC/roborio/maven/release"
-        
-        //http://first.wpi.edu/FRC/roborio/maven/release/edu/wpi/first/ntcore/
     }
     
     flatDir {
-       dirs '/../SeriouslyCommonLib/build/libs'
+       dirs 'SeriouslyCommonLib/build/libs'
    }
 }
 
@@ -94,7 +92,7 @@ task('copyResources') {
             session(remotes.rio) {
                 // execute 'mkdir ~/449_resources', ignoreError: true
                 // execute 'mkdir /488Logs', ignoreError: true
-                put from: fileTree('../SeriouslyCommonLib/lib/log4jConfig/log4j.xml'), into: '/home/lvuser/'
+                put from: fileTree('SeriouslyCommonLib/lib/log4jConfig/log4j.xml'), into: '/home/lvuser/'
                 //execute ". /etc/profile.d/natinst-path.sh; /usr/local/frc/bin/frcKillRobot.sh -t -r", ignoreError: true
             }
         }
@@ -103,7 +101,7 @@ task('copyResources') {
 
 checkstyle {
     toolVersion = '8.7'
-    configFile = file('../SeriouslyCommonLib/xbotcheckstyle.xml')
+    configFile = file('SeriouslyCommonLib/xbotcheckstyle.xml')
 }
 
 checkstyleMain{
@@ -116,7 +114,7 @@ checkstyleTest{
 
 task checkstyle(type: Checkstyle) {
     source 'src/main/java'
-    configProperties.basedir = file('../SeriouslyCommonLib')
+    configProperties.basedir = file('SeriouslyCommonLib')
     
     // Empty classpath
     classpath = files()
