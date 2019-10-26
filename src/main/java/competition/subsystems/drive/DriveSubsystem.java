@@ -24,9 +24,9 @@ public class DriveSubsystem extends BaseSubsystem {
         log.info("Creating DriveSubsystem");
 
         this.leftMaster = factory.createCANTalon(34);
-        this.leftFollower = factory.createCANTalon(35);
+        this.leftFollower = factory.createCANTalon(33);
         this.rightMaster = factory.createCANTalon(21);
-        this.rightFollower = factory.createCANTalon(20);
+        this.rightFollower = factory.createCANTalon(22);
 
         XCANTalon.configureMotorTeam("LeftDrive", "LeftMaster", leftMaster, leftFollower, 
         true, true, false);
@@ -38,4 +38,5 @@ public class DriveSubsystem extends BaseSubsystem {
         this.leftMaster.simpleSet(leftPower);
         this.rightMaster.simpleSet(rightPower);
     }
+    
 }
