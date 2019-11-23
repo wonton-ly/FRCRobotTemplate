@@ -28,7 +28,7 @@ public class DriveSlowlyCommand extends BaseCommand {
     @Override
     public void execute() {
         driveSubsystem.tankDrive(
-            .15, .15);
+            .2, .2);
 
     }
 

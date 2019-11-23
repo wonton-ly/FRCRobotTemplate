@@ -30,7 +30,7 @@ public class ArcadeDriveCommand extends BaseCommand {
         y = oi.gamepad.getRightVector().y;
         x = oi.gamepad.getRightVector().x;
         double leftPower = y + x;
-        double rightPower = y -x;
+        double rightPower = y - x;
         driveSubsystem.tankDrive(leftPower, rightPower);
 
     }

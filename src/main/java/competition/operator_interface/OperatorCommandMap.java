@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.google.inject.Provider;
 
 import competition.subsystems.drive.commands.ArcadeDriveCommand;
 import competition.subsystems.drive.commands.DriveSlowlyCommand;
 import competition.subsystems.drive.commands.GoBackwardsCommand;
 import competition.subsystems.drive.commands.TankDriveWithJoysticksCommand;
+import competition.subsystems.drive.commands.Turn60Command;
 import competition.subsystems.drive.commands.Turn90Command;
+import competition.subsystems.drive.commands.TurnAnyAngleCommand;
 import edu.wpi.first.wpilibj.command.Command;
 import xbot.common.command.SimpleCommandGroup;
 import xbot.common.command.SimpleCommandGroup.ExecutionType;
@@ -31,30 +34,61 @@ public class OperatorCommandMap {
 
     @Inject
     public void simpleCommands(OperatorInterface oi, TankDriveWithJoysticksCommand tank, 
-    GoBackwardsCommand backward, ArcadeDriveCommand arcade, Turn90Command turn, DriveSlowlyCommand slow){
+    GoBackwardsCommand backward, ArcadeDriveCommand arcade, Turn90Command turn, Provider<DriveSlowlyCommand> slow, 
+    Provider<TurnAnyAngleCommand> angle, Provider<Turn60Command> angle60){
         oi.gamepad.getifAvailable(1).whenPressed(arcade);
         oi.gamepad.getifAvailable(2).whenPressed(tank);
         oi.gamepad.getifAvailable(3).whenPressed(turn);
-        oi.gamepad.getifAvailable(4).whenPressed(slow);
+        //oi.gamepad.getifAvailable(4).whenPressed(slow);
 
-        var commandList = new ArrayList<Command>();        
-        commandList.add(slow);
-        commandList.add(turn);
+        // var commandList = new ArrayList<Command>();        
+        // commandList.add(slow);
+        // commandList.add(turn);
 
-        var commandGroup = new SimpleCommandGroup("Auto", commandList, ExecutionType.Serial);
-        oi.gamepad.getifAvailable(5).whenPressed(commandGroup);
+        // var commandGroup = new SimpleCommandGroup("Auto", commandList, ExecutionType.Serial);
+        // oi.gamepad.getifAvailable(5).whenPressed(commandGroup);
         
         var commandList2 = new ArrayList<Command>();        
-        commandList2.add(slow);
-        commandList2.add(turn);
-        commandList2.add(slow);
-        commandList2.add(turn);
-        commandList2.add(slow);
-        commandList2.add(turn);
-        commandList2.add(slow);
+        commandList2.add(slow.get());
+        commandList2.add(angle.get());
+        commandList2.add(slow.get());
+        commandList2.add(angle.get());
+        commandList2.add(slow.get());
+        commandList2.add(angle.get());
+        commandList2.add(slow.get());
+        commandList2.add(angle.get());
+        commandList2.add(slow.get());
+        commandList2.add(angle.get());
+        commandList2.add(slow.get());
+        commandList2.add(angle.get());
+        commandList2.add(slow.get());
+        commandList2.add(angle.get());
+        commandList2.add(slow.get());
+        commandList2.add(angle.get());
+        commandList2.add(slow.get());
+        commandList2.add(angle.get());
+        commandList2.add(slow.get());
 
         var commandGroup2 = new SimpleCommandGroup("Auto", commandList2, ExecutionType.Serial);
         oi.gamepad.getifAvailable(6).whenPressed(commandGroup2);
+
+        var hexagon = new ArrayList<Command>();
+        hexagon.add(slow.get());
+        hexagon.add(angle60.get());
+        hexagon.add(slow.get());
+        hexagon.add(angle60.get());
+        hexagon.add(slow.get());
+        hexagon.add(angle60.get());
+        hexagon.add(slow.get());
+        hexagon.add(angle60.get());
+        hexagon.add(slow.get());
+        hexagon.add(angle60.get());
+        hexagon.add(slow.get());
+        hexagon.add(angle60.get());
+        hexagon.add(slow.get());
+
+        var hexagonGroup = new SimpleCommandGroup("Auto", hexagon, ExecutionType.Serial);
+        oi.gamepad.getifAvailable(5).whenPressed(hexagonGroup);
 
     }
 }

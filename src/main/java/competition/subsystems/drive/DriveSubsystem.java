@@ -20,6 +20,7 @@ public class DriveSubsystem extends BaseSubsystem {
     public final XCANTalon rightMaster;
     public final XCANTalon rightFollower1;
     public final XCANTalon rightFollower2;
+    int ticksPerInch = 217;
 
     @Inject
     public DriveSubsystem(CommonLibFactory factory, XPropertyManager propManager) {
@@ -47,5 +48,17 @@ public class DriveSubsystem extends BaseSubsystem {
         this.leftMaster.simpleSet(leftPower);
         this.rightMaster.simpleSet(rightPower);
     }
-    
+
+    public double ticksToInches(int ticks){
+        return ticks/ticksPerInch;
+    }
+
+    public double getLeftTotalDistance(){
+        return -1*(ticksToInches(leftMaster.getSelectedSensorPosition(0)));
+    }
+
+    public double getRightTotalDistance(){
+        return ticksToInches(rightMaster.getSelectedSensorPosition(0));
+    }
+   
 }

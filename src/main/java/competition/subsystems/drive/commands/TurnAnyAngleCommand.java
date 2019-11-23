@@ -10,7 +10,7 @@ import xbot.common.math.PIDFactory;
 import xbot.common.math.PIDManager;
 import xbot.common.subsystems.drive.control_logic.HeadingModule;
 
-public class Turn90Command extends BaseCommand {
+public class TurnAnyAngleCommand extends BaseCommand {
 
     final DriveSubsystem driveSubsystem;
     final OperatorInterface oi; 
@@ -20,8 +20,7 @@ public class Turn90Command extends BaseCommand {
     double goal;
 
     @Inject
-    public Turn90Command(OperatorInterface oi, DriveSubsystem driveSubsystem, CommonLibFactory clf, 
-    PIDFactory pf, PoseSubsystem pose) {
+    public TurnAnyAngleCommand(OperatorInterface oi, DriveSubsystem driveSubsystem, CommonLibFactory clf, PIDFactory pf, PoseSubsystem pose) {
         this.oi = oi;
         this.driveSubsystem = driveSubsystem;
         this.requires(this.driveSubsystem);
@@ -34,21 +33,20 @@ public class Turn90Command extends BaseCommand {
         pid.setEnableDerivativeThreshold(true);
         pid.setDerivativeThreshold(0.1);
 
-        pid.setP(0.05);
+        pid.setP(0.04);
         pid.setD(0.2);
 
     }
 
     @Override
     public void initialize() {
-        goal = pose.getCurrentHeading().getValue() + 90;
+        goal = pose.getCurrentHeading().getValue() + 108;
 
     }
 
     @Override
     public void execute() {
         double power = headingModule.calculateHeadingPower(goal);
-        power *= 0.5;
         driveSubsystem.tankDrive(-power, power);
     }
 
