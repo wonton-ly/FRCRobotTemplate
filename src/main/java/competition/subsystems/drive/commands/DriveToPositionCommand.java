@@ -18,15 +18,14 @@ public class DriveToPositionCommand extends BaseCommand{
     HeadingModule headingModule;
     double goal;
     double currentPosition;
-    double ticksPerInch = 217.0;
 
-
+    @Inject
     public DriveToPositionCommand(OperatorInterface oi, DriveSubsystem driveSubsystem, CommonLibFactory clf, 
     PIDFactory pf, PoseSubsystem pose){
         this.driveSubsystem = driveSubsystem;
         this.oi = oi;
         this.requires(this.driveSubsystem);
-        this.pid = pf.createPIDManager("driveToPosition");
+        this.pid = pf.createPIDManager("DriveToPosition");
         headingModule = clf.createHeadingModule(pid);
         this.pose = pose;
 
@@ -35,22 +34,18 @@ public class DriveToPositionCommand extends BaseCommand{
         pid.setEnableDerivativeThreshold(true);
         pid.setDerivativeThreshold(0.1);
 
-        pid.setP(.9);
+        pid.setP(.5);
         pid.setD(4);
-    }
-
-    public double ticksToInches(double ticks){
-        return ticks/ticksPerInch;
     }
 
     @Override
     public void initialize() {
-        goal = ticksToInches(driveSubsystem.getLeftTotalDistance()) + 60;
+        goal = driveSubsystem.getLeftTotalDistance() + 60;
     }
 
     @Override
     public void execute(){
-        currentPosition = ticksToInches(driveSubsystem.getLeftTotalDistance());
+        currentPosition = driveSubsystem.getLeftTotalDistance();
         double power = pid.calculate(goal, currentPosition);
         power *= .2;
         driveSubsystem.tankDrive(power, power);

@@ -25,6 +25,7 @@ public class Turn90Command extends BaseCommand {
         this.oi = oi;
         this.driveSubsystem = driveSubsystem;
         this.requires(this.driveSubsystem);
+
         this.pid = pf.createPIDManager("rotate");
         headingModule = clf.createHeadingModule(pid);
         this.pose = pose;
@@ -50,7 +51,7 @@ public class Turn90Command extends BaseCommand {
         double power = headingModule.calculateHeadingPower(goal);
         power *= 0.5;
         driveSubsystem.tankDrive(-power, power);
-    }
+    }       
 
     @Override
     public boolean isFinished() {
